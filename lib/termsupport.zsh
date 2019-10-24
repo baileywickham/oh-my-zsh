@@ -32,9 +32,8 @@ function title {
               print -Pn "$1"
               echoti fsl
           fi
-      fi
-      ;;
-esac
+          ;;
+  esac
 }
 
 ZSH_THEME_TERM_TAB_TITLE_IDLE="%15<..<%~%<<" #15 char left truncated PWD

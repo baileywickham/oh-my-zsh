@@ -34,7 +34,6 @@ function clipcopy() {
         print "clipcopy: Platform $OSTYPE not supported or xclip/xsel not installed" >&2
         return 1
     fi
-  fi
 }
 
 # clippaste - "Paste" data from clipboard to stdout
