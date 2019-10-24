@@ -30,7 +30,6 @@ BRANCH=${BRANCH:-master}
 
 # Other options
 CHSH=${CHSH:-yes}
-RUNZSH=${RUNZSH:-yes}
 
 
 command_exists() {
@@ -176,7 +175,6 @@ setup_shell() {
 main() {
     # Run as unattended if stdin is closed
     if [ ! -t 0 ]; then
-        RUNZSH=no
         CHSH=no
     fi
 
@@ -187,9 +185,8 @@ main() {
     # Parse arguments
     while [ $# -gt 0 ]; do
         case $1 in
-            --unattended) RUNZSH=no; CHSH=no ;;
-            --skip-chsh) CHSH=no ;;
-            --all) RUNZSH=yes; CHSH=yes ;;
+            --unattended) CHSH=no ;;
+            --all)  CHSH=yes ;;
         esac
         shift
     done
@@ -205,12 +202,6 @@ main() {
     #setup_zshrc
     setup_shell
 
-    if [ $RUNZSH = no ]; then
-        echo "${YELLOW}Run zsh to try it out.${RESET}"
-        exit
-    fi
-
-    exec zsh -l
 }
 
 main "$@"
