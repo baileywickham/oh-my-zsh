@@ -225,59 +225,12 @@ To disable automatic upgrades, set the following in your `~/.zshrc`:
 DISABLE_AUTO_UPDATE=true
 ```
 
-### Manual Updates
-
-If you'd like to upgrade at any point in time (maybe someone just released a new plugin and you don't want to wait a week?) you just need to run:
-
-```shell
-upgrade_oh_my_zsh
-```
-
-Magic! 🎉
-
 ## Uninstalling Oh My Zsh
-
-Oh My Zsh isn't for everyone. We'll miss you, but we want to make this an easy breakup.
 
 If you want to uninstall `oh-my-zsh`, just run `uninstall_oh_my_zsh` from the command-line. It will remove itself and revert your previous `bash` or `zsh` configuration.
 
-## How do I contribute to Oh My Zsh?
-
-Before you participate in our delightful community, please read the [code of conduct](CODE_OF_CONDUCT.md).
-
-I'm far from being a [Zsh](https://www.zsh.org/) expert and suspect there are many ways to improve – if you have ideas on how to make the configuration easier to maintain (and faster), don't hesitate to fork and send pull requests!
-
-We also need people to test out pull-requests. So take a look through [the open issues](https://github.com/baileywickham/oh-my-zsh/issues) and help where you can.
-
-See [Contributing](CONTRIBUTING.md) for more details.
-
-### Do NOT send us themes
-
-We have (more than) enough themes for the time being. Please add your theme to the [external themes](https://github.com/baileywickham/oh-my-zsh/wiki/External-themes) wiki page.
-
-## Contributors
-
-Oh My Zsh has a vibrant community of happy users and delightful contributors. Without all the time and help from our contributors, it wouldn't be so awesome.
-
-Thank you so much!
-
-## Follow Us
-
-We're on the social media.
-
-* [@ohmyzsh](https://twitter.com/ohmyzsh) on Twitter. You should follow it.
-* [Oh My Zsh](https://www.facebook.com/Oh-My-Zsh-296616263819290/) on Facebook.
-
-## Merchandise
-
-We have [stickers, shirts, and coffee mugs available](https://shop.planetargon.com/collections/oh-my-zsh?utm_source=github) for you to show off your love of Oh My Zsh. Again, you will become the talk of the town!
 
 ## License
 
 Oh My Zsh is released under the [MIT license](LICENSE.txt).
 
-## About Planet Argon
-
-![Planet Argon](https://pa-github-assets.s3.amazonaws.com/PARGON_logo_digital_COL-small.jpg)
-
-Oh My Zsh was started by the team at [Planet Argon](https://www.planetargon.com/?utm_source=github), a [Ruby on Rails development agency](https://www.planetargon.com/skills/ruby-on-rails-development?utm_source=github). Check out our [other open source projects](https://www.planetargon.com/open-source?utm_source=github).
