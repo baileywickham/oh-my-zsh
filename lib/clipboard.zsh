@@ -63,5 +63,4 @@ function clippaste() {
         print "clipcopy: Platform $OSTYPE not supported or xclip/xsel not installed" >&2
         return 1
     fi
-  fi
 }
