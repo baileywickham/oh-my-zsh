@@ -119,8 +119,6 @@ setup_zshrc() {
     export ZSH=\"$ZSH\"
     " ~/.zshrc > ~/.zshrc-omztemp
     mv -f ~/.zshrc-omztemp ~/.zshrc
-
-    echo
 }
 
 setup_shell() {
@@ -135,24 +133,6 @@ setup_shell() {
     fi
 
     # If this platform doesn't provide a "chsh" command, bail out.
-    if ! command_exists chsh; then
-        cat <<-EOF
-            I can't change your shell automatically because this system does not have chsh.
-            ${BLUE}Please manually change your default shell to zsh${RESET}
-        EOF
-        return
-    fi
-
-    echo "${BLUE}Time to change your default shell to zsh:${RESET}"
-
-    # Prompt for user choice on changing the default login shell
-    printf "${YELLOW}Do you want to change your default shell to zsh? [Y/n]${RESET} "
-    read opt
-    case $opt in
-        y*|Y*|"") echo "Changing the shell..." ;;
-        n*|N*) echo "Shell change skipped."; return ;;
-        *) echo "Invalid choice. Shell change skipped."; return ;;
-    esac
 
     # Check if we're running on Termux
     case "$PREFIX" in
@@ -174,13 +154,6 @@ setup_shell() {
         # Get the path to the right zsh binary
         # 1. Use the most preceding one based on $PATH, then check that it's in the shells file
         # 2. If that fails, get a zsh path from the shells file, then check it actually exists
-        if ! zsh=$(which zsh) || ! grep -qx "$zsh" "$shells_file"; then
-            if ! zsh=$(grep '^/.*/zsh$' "$shells_file" | tail -1) || [ ! -f "$zsh" ]; then
-                error "no zsh binary found or not present in '$shells_file'"
-                error "change your default shell manually."
-                return
-            fi
-        fi
     fi
 
     # We're going to change the default shell, so back up the current one
@@ -198,7 +171,6 @@ setup_shell() {
         echo "${GREEN}Shell successfully changed to '$zsh'.${RESET}"
     fi
 
-    echo
 }
 
 main() {
@@ -208,11 +180,16 @@ main() {
         CHSH=no
     fi
 
+    if [ $# -eq 0 ]; then
+        echo "use --all to change default shell and run zsh"
+        exit
+    fi
     # Parse arguments
     while [ $# -gt 0 ]; do
         case $1 in
             --unattended) RUNZSH=no; CHSH=no ;;
             --skip-chsh) CHSH=no ;;
+            --all) RUNZSH=yes; CHSH=yes ;;
         esac
         shift
     done
@@ -225,7 +202,7 @@ main() {
     fi
 
     setup_ohmyzsh
-    setup_zshrc
+    #setup_zshrc
     setup_shell
 
     if [ $RUNZSH = no ]; then
